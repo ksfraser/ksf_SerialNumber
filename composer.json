@@ -1,0 +1,72 @@
+{
+    "name": "frontaccounting/serialnumber-module",
+    "description": "Comprehensive serial number tracking module for FrontAccounting with Assets integration support",
+    "type": "frontaccounting-module",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "FrontAccounting Community",
+            "email": "community@frontaccounting.net"
+        }
+    ],
+    "keywords": [
+        "frontaccounting",
+        "serial-number",
+        "asset-tracking",
+        "inventory-management",
+        "erp"
+    ],
+    "homepage": "https://github.com/yourusername/ksf_SerialNumber",
+    "support": {
+        "issues": "https://github.com/yourusername/ksf_SerialNumber/issues",
+        "source": "https://github.com/yourusername/ksf_SerialNumber"
+    },
+    "require": {
+        "php": ">=8.0",
+        "doctrine/dbal": "^2.13 || ^3.0",
+        "psr/event-dispatcher": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5 || ^10.0",
+        "phpstan/phpstan": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FrontAccounting\\Modules\\SerialNumber\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FrontAccounting\\Modules\\SerialNumber\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "analyze": "phpstan analyse",
+        "check": [
+            "@test",
+            "@analyze"
+        ]
+    },
+    "extra": {
+        "frontaccounting": {
+            "module-name": "SerialNumber",
+            "module-version": "1.0.0",
+            "module-description": "Serial Number Tracking Module",
+            "module-author": "FrontAccounting Community",
+            "dependencies": [
+                "core"
+            ],
+            "hooks": [
+                "transaction_processing",
+                "inventory_management"
+            ]
+        }
+    }
+}
